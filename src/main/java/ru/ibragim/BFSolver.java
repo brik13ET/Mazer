@@ -1,25 +1,26 @@
 package ru.ibragim;
 
-import java.io.Serializable;
-import java.util.Stack;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class DFSolver extends BaseSolver implements Serializable
+public class BFSolver extends BaseSolver
 {
-	private Cursor finalPath;
-	public DFSolver(Map m)
-	{
+	public BFSolver(Map m) {
 		super(m);
 	}
+
+	private Cursor finalPath;
 
 	@Override
 	public boolean solve()
 	{
-		var cursors = new Stack<BaseSolver.Cursor>();
-		cursors.push(new Cursor(this.Start));
+		Queue<Cursor> cursors = new LinkedList<Cursor>();
+		cursors.add(new Cursor(this.Start));
 		Cursor el = null;
 		while (!cursors.isEmpty())
 		{
-			el = cursors.pop();
+			el = cursors.poll();
 			Direction elDirection = el.getDirection();
 			for (int dirs = 0; dirs < 4; dirs++) {
 				var moved = el.move();
@@ -36,17 +37,16 @@ public class DFSolver extends BaseSolver implements Serializable
 					map.getAt(movedPosition) == Cell.End
 				)
 				{
-					cursors.clear();;
+					cursors.clear();
 					el = moved;
 					break;
 				}
-				if (
-					map.getAt(movedPosition) == Cell.Empty
-				)
+				if (map.getAt(movedPosition) == Cell.Empty)
 				{
 					map.setAt(movedPosition, Cell.Path);
-					cursors.push(moved);
+					cursors.add(moved);
 				}
+
 				elDirection = elDirection.rotateCW();
 				el.setDirection(elDirection);
 			}
@@ -54,11 +54,11 @@ public class DFSolver extends BaseSolver implements Serializable
 		finalPath = el;
 		return cursors.isEmpty();
 	}
+	
 
 	@Override
 	public String toString()
 	{
 		return map.toStringDirected(finalPath);
 	}
-	
 }

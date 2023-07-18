@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public abstract class BaseSolver {
+public abstract class BaseSolver implements Serializable {
 	
 	protected Map map;
 
@@ -106,4 +106,5 @@ public abstract class BaseSolver {
 	}
 
 	public abstract boolean solve();
+	public abstract String toString();
 }

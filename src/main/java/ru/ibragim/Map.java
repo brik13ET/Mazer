@@ -107,7 +107,7 @@ public class Map implements Serializable {
 		sb.append(toString());
 
 		Position curPosition = BaseSolver.getStart(this);
-		curPosition = new Position(curPosition.getX()- 1, curPosition.getY()+ 1);
+		curPosition = new Position(curPosition.getX(), curPosition.getY()+ 1);
 
 		for (Direction step : cur.getPath())
 		{
