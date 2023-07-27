@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ru.ibragim.AppTest" time="0.245" tests="3" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="20"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="java.class.path" value="D:\Git\Mazer\target\test-classes;D:\Git\Mazer\target\classes;C:\Users\user0\.m2\repository\org\hibernate\hibernate-core\5.3.1.Final\hibernate-core-5.3.1.Final.jar;C:\Users\user0\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\user0\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\user0\.m2\repository\org\javassist\javassist\3.22.0-GA\javassist-3.22.0-GA.jar;C:\Users\user0\.m2\repository\net\bytebuddy\byte-buddy\1.8.12\byte-buddy-1.8.12.jar;C:\Users\user0\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\user0\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.1.1.Final\jboss-transaction-api_1.2_spec-1.1.1.Final.jar;C:\Users\user0\.m2\repository\org\jboss\jandex\2.0.3.Final\jandex-2.0.3.Final.jar;C:\Users\user0\.m2\repository\com\fasterxml\classmate\1.3.4\classmate-1.3.4.jar;C:\Users\user0\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\user0\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.0.3.Final\hibernate-commons-annotations-5.0.3.Final.jar;C:\Users\user0\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\user0\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\user0\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user0\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user0\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\user0\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\user0\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\user0\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\user0\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\user0\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\user0\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Samara"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="20"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="D:\jdk\bin"/>
+    <property name="sun.java.command" value="C:\Users\user0\AppData\Local\Temp\surefire4328674805363182617\surefirebooter-20230727195330059_3.jar C:\Users\user0\AppData\Local\Temp\surefire4328674805363182617 2023-07-27T19-53-29_780-jvmRun1 surefire-20230727195330059_1tmp surefire_0-20230727195330059_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\Git\Mazer\target\test-classes;D:\Git\Mazer\target\classes;C:\Users\user0\.m2\repository\org\hibernate\hibernate-core\5.3.1.Final\hibernate-core-5.3.1.Final.jar;C:\Users\user0\.m2\repository\org\jboss\logging\jboss-logging\3.3.2.Final\jboss-logging-3.3.2.Final.jar;C:\Users\user0\.m2\repository\javax\persistence\javax.persistence-api\2.2\javax.persistence-api-2.2.jar;C:\Users\user0\.m2\repository\org\javassist\javassist\3.22.0-GA\javassist-3.22.0-GA.jar;C:\Users\user0\.m2\repository\net\bytebuddy\byte-buddy\1.8.12\byte-buddy-1.8.12.jar;C:\Users\user0\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\user0\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.1.1.Final\jboss-transaction-api_1.2_spec-1.1.1.Final.jar;C:\Users\user0\.m2\repository\org\jboss\jandex\2.0.3.Final\jandex-2.0.3.Final.jar;C:\Users\user0\.m2\repository\com\fasterxml\classmate\1.3.4\classmate-1.3.4.jar;C:\Users\user0\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\user0\.m2\repository\org\hibernate\common\hibernate-commons-annotations\5.0.3.Final\hibernate-commons-annotations-5.0.3.Final.jar;C:\Users\user0\.m2\repository\org\postgresql\postgresql\42.6.0\postgresql-42.6.0.jar;C:\Users\user0\.m2\repository\org\checkerframework\checker-qual\3.31.0\checker-qual-3.31.0.jar;C:\Users\user0\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user0\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user0\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\user0\.m2\repository\javax\activation\javax.activation-api\1.2.0\javax.activation-api-1.2.0.jar;C:\Users\user0\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.1\jaxb-runtime-2.3.1.jar;C:\Users\user0\.m2\repository\org\glassfish\jaxb\txw2\2.3.1\txw2-2.3.1.jar;C:\Users\user0\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.7\istack-commons-runtime-3.0.7.jar;C:\Users\user0\.m2\repository\org\jvnet\staxex\stax-ex\1.8\stax-ex-1.8.jar;C:\Users\user0\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.15\FastInfoset-1.2.15.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\user0"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-04-18"/>
+    <property name="java.home" value="D:\jdk"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\Git\Mazer"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\user0\AppData\Local\Temp\surefire4328674805363182617\surefirebooter-20230727195330059_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="20.0.1+9-29"/>
+    <property name="user.name" value="user0"/>
+    <property name="stdout.encoding" value="Cp1251"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\user0\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\user0\AppData\Local\Temp\"/>
+    <property name="java.version" value="20.0.1"/>
+    <property name="user.dir" value="D:\Git\Mazer"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1251"/>
+    <property name="java.library.path" value="D:\jdk\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Proteus 8 Professional\Tools\_WinAVR\bin;D:\Proteus 8 Professional\Tools\_WinAVR\utils\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\AVR Studio\Compiler\bin;D:\Microsoft SQL Server\Shared_x86\160\Tools\Binn\;D:\Microsoft SQL Server\Shared\160\Tools\Binn\;D:\Microsoft SQL Server\Shared\Client SDK\ODBC\170\Tools\Binn\;D:\Microsoft SQL Server\Shared\160\DTS\Binn\;D:\Microsoft SQL Server\Shared_x86\160\DTS\Binn\;C:\Program Files\dotnet\;D:\Rust\Cargo\bin;C:\Users\user0\AppData\Local\Microsoft\WindowsApps;C:\Users\user0\.dotnet\tools;C:\Program Files\Azure Data Studio\bin;C:\Users\user0\AppData\Local\JetBrains\Toolbox\scripts;D:\Documents\scripts;C:\Program Files\Azure Data Studio\bin;D:\Microsoft VS Code\bin;C:\Users\user0\.dotnet\tools;D:\maven\bin;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1251"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="20.0.1+9-29"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="64.0"/>
+  </properties>
+  <testcase name="DFSTest" classname="ru.ibragim.AppTest" time="0.101">
+    <system-out><![CDATA[BlockCount:	160
+██████████████████████████████████████████
+█             ▓ ▓    ▓ ▓          ▓     ▓█
+█    ▓      ▓   ▓ ▓ ▓ ▓       ▓  ▓     ▓ █
+█  ▓ ▓▓      ▓           S  ▓      ▓   ▓▓█
+█  ▓▓  ▓          ▓                 ▓ ▓  █
+█        ▓▓  ▓      ▓  ▓  ▓  ▓      ▓    █
+█  ▓ ▓▓ ▓  ▓ ▓    ▓  ▓  ▓    ▓▓    ▓   ▓ █
+█              ▓         ▓   ▓      ▓    █
+█   ▓ ▓        ▓       ▓    ▓       ▓ ▓  █
+█              ▓      ▓ ▓  ▓  ▓     ▓▓▓  █
+█▓      ▓         ▓ ▓    ▓ ▓      ▓  ▓   █
+█ ▓ ▓        ▓    ▓ ▓▓▓         ▓    ▓   █
+█   ▓▓  ▓   ▓▓  E  ▓ ▓▓▓▓             ▓▓ █
+█   ▓        ▓▓ ▓            ▓  ▓        █
+█  ▓         ▓  ▓  ▓▓▓        ▓  ▓       █
+█      ▓    ▓ ▓  ▓▓   ▓▓ ▓  ▓▓           █
+█▓   ▓▓         ▓            ▓▓          █
+█  ▓    ▓      ▓   ▓   ▓      ▓ ▓▓     ▓ █
+█         ▓ ▓▓▓ ▓                     ▓  █
+█▓        ▓▓  ▓▓  ▓▓     ▓   ▓  ▓ ▓ ▓ ▓  █
+█   ▓                ▓       ▓     ▓     █
+██████████████████████████████████████████
+Start Deep solving
+]]></system-out>
+  </testcase>
+  <testcase name="BFSTest" classname="ru.ibragim.AppTest" time="0.016">
+    <system-out><![CDATA[BlockCount:	160
+██████████████████████████████████████████
+█             ▓ ▓    ▓ ▓          ▓     ▓█
+█    ▓      ▓   ▓ ▓ ▓ ▓       ▓  ▓     ▓ █
+█  ▓ ▓▓      ▓           S  ▓      ▓   ▓▓█
+█  ▓▓  ▓          ▓                 ▓ ▓  █
+█        ▓▓  ▓      ▓  ▓  ▓  ▓      ▓    █
+█  ▓ ▓▓ ▓  ▓ ▓    ▓  ▓  ▓    ▓▓    ▓   ▓ █
+█              ▓         ▓   ▓      ▓    █
+█   ▓ ▓        ▓       ▓    ▓       ▓ ▓  █
+█              ▓      ▓ ▓  ▓  ▓     ▓▓▓  █
+█▓      ▓         ▓ ▓    ▓ ▓      ▓  ▓   █
+█ ▓ ▓        ▓    ▓ ▓▓▓         ▓    ▓   █
+█   ▓▓  ▓   ▓▓  E  ▓ ▓▓▓▓             ▓▓ █
+█   ▓        ▓▓ ▓            ▓  ▓        █
+█  ▓         ▓  ▓  ▓▓▓        ▓  ▓       █
+█      ▓    ▓ ▓  ▓▓   ▓▓ ▓  ▓▓           █
+█▓   ▓▓         ▓            ▓▓          █
+█  ▓    ▓      ▓   ▓   ▓      ▓ ▓▓     ▓ █
+█         ▓ ▓▓▓ ▓                     ▓  █
+█▓        ▓▓  ▓▓  ▓▓     ▓   ▓  ▓ ▓ ▓ ▓  █
+█   ▓                ▓       ▓     ▓     █
+██████████████████████████████████████████
+Start Wide solving
+]]></system-out>
+  </testcase>
+  <testcase name="echoClassNames" classname="ru.ibragim.AppTest" time="0.005">
+    <system-out><![CDATA[Turn:	ru.ibragim.model.Turn
+Map:	ru.ibragim.model.Map
+]]></system-out>
+  </testcase>
+</testsuite>

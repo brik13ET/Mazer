@@ -2,19 +2,19 @@ package ru.ibragim;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
-import ru.ibragim.BaseSolver.Cursor;
 
 public class Map implements Serializable {
 	Cell[] data;
-	int width;
-	int heigth;
+	ru.ibragim.model.Map Db;
+	private int width;
+	private int heigth;
 
 	public Map(int width, int heigth, float fill, int seed)
 	{
+		Db = new ru.ibragim.model.Map(width,heigth,fill,seed);
 		this.width = width;
 		this.heigth = heigth;
 		data = new Cell[width * heigth];
@@ -44,39 +44,31 @@ public class Map implements Serializable {
 		data[indexes[indexes.length - 1]] = Cell.End;
 	}
 
-	public Map(Collection<Cell> col, int width, int heigth)
-	{
-		if (width * heigth != col.size())
-			throw new IllegalArgumentException("Width * Height != col.size()");
-		data = new Cell[col.size()];
-		var i = col.iterator();
-		int j = 0;
-		Object el;
-		while (i.hasNext())
-		{
-			el = i.next();
-			data[j] = (Cell)el;
-			j ++;
-		}
-	}
-
 	public Map(Map from)
 	{
 		this.width = from.width;
 		this.heigth = from.heigth;
 		data = new Cell[width * heigth];
+		Db = from.Db;
 		System.arraycopy(from.data, 0, data, 0, width*heigth);
 	}
 
-	public Cell getAt(Position p)
-	{
-		return data[p.getX() + p.getY() * this.width];
-	}
 	
-	public void setAt(Position p, Cell c)
+	public int	getWidth()	{ return width; }
+	public int	getHeigth()	{ return heigth; }
+
+	public Cell getAt(Position pos)
 	{
-		data[p.getX() + p.getY() * this.width] = c;
+		return data[pos.getX() + pos.getY() * width];
 	}
+
+	
+	public void setAt(Position pos, Cell c)
+	{
+		data[pos.getX() + pos.getY() * width] = c;
+	}
+
+	
 
 	@Override
 	public String toString()
@@ -121,5 +113,10 @@ public class Map implements Serializable {
 			curPosition = step.apply(curPosition);
 		}
 		return sb.toString();
+	}
+
+	public ru.ibragim.model.Map toDbMap()
+	{
+		return Db;
 	}
 }

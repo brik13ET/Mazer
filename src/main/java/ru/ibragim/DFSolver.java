@@ -1,11 +1,9 @@
 package ru.ibragim;
 
-import java.io.Serializable;
 import java.util.Stack;
 
-public class DFSolver extends BaseSolver implements Serializable
+public class DFSolver extends BaseSolver
 {
-	private Cursor finalPath;
 	public DFSolver(Map m)
 	{
 		super(m);
@@ -14,7 +12,7 @@ public class DFSolver extends BaseSolver implements Serializable
 	@Override
 	public boolean solve()
 	{
-		var cursors = new Stack<BaseSolver.Cursor>();
+		var cursors = new Stack<Cursor>();
 		cursors.push(new Cursor(this.Start));
 		Cursor el = null;
 		while (!cursors.isEmpty())
@@ -28,8 +26,8 @@ public class DFSolver extends BaseSolver implements Serializable
 					movedPositionX = movedPosition.getX(),
 					movedPositionY = movedPosition.getY();
 				if (
-					movedPositionX < 0 || movedPositionX >= map.width ||
-					movedPositionY < 0 || movedPositionY >= map.heigth
+					movedPositionX < 0 || movedPositionX >= map.getWidth() ||
+					movedPositionY < 0 || movedPositionY >= map.getHeigth()
 				)
 					continue;
 				if (
@@ -51,14 +49,14 @@ public class DFSolver extends BaseSolver implements Serializable
 				el.setDirection(elDirection);
 			}
 		}
-		finalPath = el;
+		solution = el;
 		return cursors.isEmpty();
 	}
 
 	@Override
 	public String toString()
 	{
-		return map.toStringDirected(finalPath);
+		return map.toStringDirected(solution);
 	}
 	
 }

@@ -1,6 +1,5 @@
 package ru.ibragim;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -9,8 +8,6 @@ public class BFSolver extends BaseSolver
 	public BFSolver(Map m) {
 		super(m);
 	}
-
-	private Cursor finalPath;
 
 	@Override
 	public boolean solve()
@@ -29,8 +26,8 @@ public class BFSolver extends BaseSolver
 					movedPositionX = movedPosition.getX(),
 					movedPositionY = movedPosition.getY();
 				if (
-					movedPositionX < 0 || movedPositionX >= map.width ||
-					movedPositionY < 0 || movedPositionY >= map.heigth
+					movedPositionX < 0 || movedPositionX >= map.getWidth() ||
+					movedPositionY < 0 || movedPositionY >= map.getHeigth()
 				)
 					continue;
 				if (
@@ -51,7 +48,7 @@ public class BFSolver extends BaseSolver
 				el.setDirection(elDirection);
 			}
 		}
-		finalPath = el;
+		solution = el;
 		return cursors.isEmpty();
 	}
 	
@@ -59,6 +56,6 @@ public class BFSolver extends BaseSolver
 	@Override
 	public String toString()
 	{
-		return map.toStringDirected(finalPath);
+		return map.toStringDirected(solution);
 	}
 }
