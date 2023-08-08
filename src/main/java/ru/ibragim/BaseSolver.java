@@ -10,7 +10,7 @@ public abstract class BaseSolver implements Serializable {
 
 	protected Position Start, End;
 
-	protected Cursor solution;
+	protected State solution;
 
 	public static Position getStart(Map m)
 	{
@@ -55,5 +55,11 @@ public abstract class BaseSolver implements Serializable {
 	}
 
 	public abstract boolean solve();
-	public abstract String toString();
+
+	@Override
+	public String toString()
+	{
+		// return map.toNiceStringDirected(solution);
+		return map.toNiceString();
+	}
 }

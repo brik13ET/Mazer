@@ -12,15 +12,14 @@ public class BFSolver extends BaseSolver
 	@Override
 	public boolean solve()
 	{
-		Queue<Cursor> cursors = new LinkedList<Cursor>();
-		cursors.add(new Cursor(this.Start));
-		Cursor el = null;
+		Queue<State> cursors = new LinkedList<State>();
+		cursors.add(new State(this.Start));
 		while (!cursors.isEmpty())
 		{
-			el = cursors.poll();
-			Direction elDirection = el.getDirection();
+			solution = cursors.poll();
+			Direction elDirection = solution.getDirection();
 			for (int dirs = 0; dirs < 4; dirs++) {
-				var moved = el.move();
+				var moved = solution.move();
 				var movedPosition = moved.getPosition();
 				int
 					movedPositionX = movedPosition.getX(),
@@ -35,7 +34,7 @@ public class BFSolver extends BaseSolver
 				)
 				{
 					cursors.clear();
-					el = moved;
+					solution = moved;
 					break;
 				}
 				if (map.getAt(movedPosition) == Cell.Empty)
@@ -45,17 +44,9 @@ public class BFSolver extends BaseSolver
 				}
 
 				elDirection = elDirection.rotateCW();
-				el.setDirection(elDirection);
+				solution.setDirection(elDirection);
 			}
 		}
-		solution = el;
 		return cursors.isEmpty();
-	}
-	
-
-	@Override
-	public String toString()
-	{
-		return map.toStringDirected(solution);
 	}
 }

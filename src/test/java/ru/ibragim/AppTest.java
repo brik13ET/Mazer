@@ -2,7 +2,15 @@ package ru.ibragim;
 
 import static org.junit.Assert.assertTrue;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.Test;
+
+import ru.ibragim.model.Turn;
 
 /**
  * Unit test for simple App.
@@ -43,9 +51,87 @@ public class AppTest
 	@Test
 	public void echoClassNames()
 	{
-		Class[] classes = new Class[] { ru.ibragim.model.Turn.class, ru.ibragim.model.Map.class};
+		Class[] classes = new Class[] { ru.ibragim.model.Turn.class, ru.ibragim.Map.class};
 		for (Class cl : classes) {
 			System.out.printf("%s:\t%s\n", cl.getSimpleName(), cl.getName());
 		}
+	}
+
+	@Test
+	public void pullMaps()
+	{
+		StandardServiceRegistry ssr =
+			new StandardServiceRegistryBuilder()
+			.configure("hibernate.cfg.xml")
+			.build();
+		Metadata meta = 
+			new MetadataSources(ssr)
+			.getMetadataBuilder()
+			.build();
+
+		SessionFactory factory = 
+			meta
+			.getSessionFactoryBuilder()
+			.build();
+		Session session = factory.openSession();
+
+		var t = session.beginTransaction();
+		System.out.println("Pulled maps");
+
+		var qMaps = session.createQuery("from ru.ibragim.Map").list();
+		System.out.println(qMaps.size());
+
+		
+		for (var m: qMaps)
+		{
+			if (!(m instanceof ru.ibragim.Map))
+			{
+				System.out.println("Bad Object");
+				continue;
+			}
+			var castedMap = (ru.ibragim.Map)m;
+			System.out.println(castedMap);
+		}
+
+		session.clear();
+
+		t.commit();
+		factory.close();
+		session.close();
+	}
+
+	
+	@Test
+	public void pullTurns()
+	{
+		StandardServiceRegistry ssr =
+			new StandardServiceRegistryBuilder()
+			.configure("hibernate.cfg.xml")
+			.build();
+		Metadata meta = 
+			new MetadataSources(ssr)
+			.getMetadataBuilder()
+			.build();
+
+		SessionFactory factory = 
+			meta
+			.getSessionFactoryBuilder()
+			.build();
+		Session session = factory.openSession();
+		
+		var qTurns = session.createQuery("select t from ru.ibragim.model.Turn t order by t.order").list();
+		for (Object object : qTurns) {
+			if (! (object instanceof Turn))
+			{
+				System.err.println("Bad object");
+				continue;
+			}
+			Turn t = (Turn)object;
+			System.out.println(t);
+		}
+		System.out.println();
+		
+		factory.close();
+		session.close();
 	}
 }

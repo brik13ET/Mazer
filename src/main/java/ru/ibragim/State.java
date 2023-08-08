@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Cursor implements Serializable
+public class State implements Serializable
 	
 	{
 		private Position currentPosition;
 		private Direction currentDirection;
 		private Queue<Direction> path = new LinkedList<>();
 
-		public Cursor(Position pos)
+		public State(Position pos)
 		{
 			currentPosition = pos;
 			currentDirection = Direction.Up;
@@ -42,9 +42,9 @@ public class Cursor implements Serializable
 			this.currentPosition = value;
 		}
 		
-		public Cursor move()
+		public State move()
 		{
-			Cursor ret = new Cursor(
+			State ret = new State(
 				 currentDirection.apply(
 					currentPosition
 				)

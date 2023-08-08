@@ -3,9 +3,8 @@ package ru.ibragim.model;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.*;
 
-import org.hibernate.annotations.Type;
+import jakarta.persistence.*;
 
 import ru.ibragim.*;
 
@@ -26,7 +25,7 @@ public class Turn implements Serializable
 	private String solver;
 
 	@Column(name = "Direction", nullable = false)
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated
 	Direction dir;
 
 	public Turn()
@@ -43,10 +42,9 @@ public class Turn implements Serializable
 		this.map = m.getId();
 	}
 
-	public static Turn[] fromCursors(Collection<Direction> cnt, ru.ibragim.Map m, String solver)
+	public static Turn[] fromCursors(Collection<Direction> cnt, ru.ibragim.Map mp, String solver)
 	{
 		Turn[] ret = new Turn[cnt.size()];
-		Map mp = m.toDbMap();
 		int i = 0;
 		for (Direction cs : cnt)
 		{

@@ -8,7 +8,7 @@ public class AStarSolver extends BaseSolver
 		super(m);
 	}
 
-	protected class CostedCursor extends Cursor
+	protected class CostedCursor extends State
 	{
 
 		

@@ -23,8 +23,12 @@
 	<property name="connection.driver_class">
 		org.postgresql.Driver
 	</property>
+	<property name="hibernate.globally_quoted_identifiers">true</property>
+	<property name="hibernate.show_sql">false</property>
+	<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+	
 	
 	<mapping class="ru.ibragim.model.Turn"/>  
-	<mapping class="ru.ibragim.model.Map"/>  
+	<mapping class="ru.ibragim.Map"/>  
     </session-factory>  
 </hibernate-configuration>

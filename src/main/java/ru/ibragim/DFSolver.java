@@ -12,15 +12,14 @@ public class DFSolver extends BaseSolver
 	@Override
 	public boolean solve()
 	{
-		var cursors = new Stack<Cursor>();
-		cursors.push(new Cursor(this.Start));
-		Cursor el = null;
+		var cursors = new Stack<State>();
+		cursors.push(new State(this.Start));
 		while (!cursors.isEmpty())
 		{
-			el = cursors.pop();
-			Direction elDirection = el.getDirection();
+			solution = cursors.pop();
+			Direction elDirection = solution.getDirection();
 			for (int dirs = 0; dirs < 4; dirs++) {
-				var moved = el.move();
+				var moved = solution.move();
 				var movedPosition = moved.getPosition();
 				int
 					movedPositionX = movedPosition.getX(),
@@ -35,7 +34,7 @@ public class DFSolver extends BaseSolver
 				)
 				{
 					cursors.clear();;
-					el = moved;
+					solution = moved;
 					break;
 				}
 				if (
@@ -46,17 +45,10 @@ public class DFSolver extends BaseSolver
 					cursors.push(moved);
 				}
 				elDirection = elDirection.rotateCW();
-				el.setDirection(elDirection);
+				solution.setDirection(elDirection);
 			}
 		}
-		solution = el;
 		return cursors.isEmpty();
-	}
-
-	@Override
-	public String toString()
-	{
-		return map.toStringDirected(solution);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package ru.ibragim;
 
+import java.util.Random;
+
 import org.hibernate.*;
 import org.hibernate.boot.*;
 import org.hibernate.boot.registry.*;
@@ -14,8 +16,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.printf("BlockCount:\t%d\n", (int)(40 * 20 * .2f));
-
 		StandardServiceRegistry ssr =
 			new StandardServiceRegistryBuilder()
 			.configure("hibernate.cfg.xml")
@@ -31,25 +31,27 @@ public class App
 			.build();
 		Session session = factory.openSession();
 		var t = session.beginTransaction();
+			
+	
 
-		session.clear();
+        Map dbm = new Map(40, 20, 20, new Random().nextInt());
+		
+		session.saveOrUpdate(dbm);
+		System.out.println(dbm);
+		System.out.println(dbm.toNiceString());
 
-        Map m = new Map(40, 20, 20, 76);
-		session.save(m.toDbMap());
-
-        System.out.println(m);
 		BaseSolver sol;
-		boolean ended;
 		
+		// select * from "Solution" s where s."MapID" = 10 and s."Solver" like '%DFS%'  order by s."MapID" asc, s."Solver" asc, s."Order" asc;
 		
 
-		sol = new DFSolver(m);
+		sol = new DFSolver(dbm);
 		System.out.println("Start Deep solving");
-		ended = sol.solve();
+		sol.solve();
 
 		for (Turn turn : sol.retieveData())
 		{
-			System.out.println(turn);
+			// System.out.println(turn);
 			var fin = session.find(Turn.class, turn);
 			if (fin != null && fin.equals(turn))
 				session.merge(turn);
@@ -57,25 +59,29 @@ public class App
 				session.save(turn);
 		}
 
-		System.out.println(sol.toString());
-		System.out.println("isEnded:\t" + ended);
+		// System.out.println(dbm.toNiceString());
+		System.out.println(sol);
 
 
 
-		sol = new BFSolver(m);
+		sol = new BFSolver(dbm);
 		System.out.println("Start Wide solving");
-		ended = sol.solve();
+		sol.solve();
 		for (Turn turn : sol.retieveData()) {
-			session.save(turn);
+			var fin = session.find(Turn.class, turn);
+			if (fin != null && fin.equals(turn))
+				session.merge(turn);
+			else
+				session.save(turn);
 		}
 
-		t.commit();
+		// System.out.println(dbm.toNiceString());
+		System.out.println(sol);
 		
+		session.flush();
+		t.commit();
 		factory.close();
 		session.close();
-
-		System.out.println(sol.toString());
-		System.out.println("isEnded:\t" + ended);
 
     }
 }

@@ -5,18 +5,43 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import jakarta.persistence.*;
 
+
+@Entity
+@Table(name = "Maps")
 public class Map implements Serializable {
+	@Transient
 	Cell[] data;
-	ru.ibragim.model.Map Db;
+	
+	@Id
+	@GeneratedValue
+	private long id;
+
+	@Column(name = "Width", nullable = false)
 	private int width;
+
+	@Column(name = "Heigth", nullable = false)
 	private int heigth;
+
+	@Column(name = "Fill", nullable = false)
+	private float fill;
+
+	@Column(name = "Seed", nullable = false)
+	private int seed;
+
+	protected Map()
+	{
+		this(40, 20, .2f, 0);
+	}
 
 	public Map(int width, int heigth, float fill, int seed)
 	{
-		Db = new ru.ibragim.model.Map(width,heigth,fill,seed);
+		
 		this.width = width;
 		this.heigth = heigth;
+		this.fill = fill;
+		this.seed = seed;
 		data = new Cell[width * heigth];
 			 if (fill < 0  ) fill  = 0;
 		else if (fill > 100) fill  = 1;
@@ -46,16 +71,25 @@ public class Map implements Serializable {
 
 	public Map(Map from)
 	{
-		this.width = from.width;
-		this.heigth = from.heigth;
-		data = new Cell[width * heigth];
-		Db = from.Db;
-		System.arraycopy(from.data, 0, data, 0, width*heigth);
+		this.width	=	from.width;
+		this.heigth	=	from.heigth;
+		this.fill	=	from.fill;
+		this.seed	=	from.seed;
+		this.id		=	from.id;
+		data		=	new Cell[width * heigth];
+		System.arraycopy(
+			from.data,	0,
+			data,	0,
+			width*heigth
+		);
 	}
 
 	
 	public int	getWidth()	{ return width; }
 	public int	getHeigth()	{ return heigth; }
+	public long	getId()  	{ return id; }
+	public int	getSeed()	{ return seed; }
+	public float getFill()	{ return fill; }
 
 	public Cell getAt(Position pos)
 	{
@@ -72,6 +106,25 @@ public class Map implements Serializable {
 
 	@Override
 	public String toString()
+	{
+		return String.format(
+			"Map {" +
+				".id = %d, " +
+				".width = %d, " +
+				".heigth = %d, " +
+				".fill = %f, " +
+				".seed = %d, " +
+			"}",
+			this.id,
+			this.width,
+			this.heigth,
+			this.fill,
+			this.seed
+		);
+	}
+
+
+	public String toNiceString()
 	{
 		var sb = new StringBuilder();
 		for (int i = 0; i < width + 2; i++)
@@ -92,7 +145,7 @@ public class Map implements Serializable {
 		return sb.toString();
 	}
 
-	public String toStringDirected(Cursor cur)
+	public String toNiceStringDirected(State cur)
 	{
 		var sb = new StringBuilder();
 		
@@ -113,10 +166,5 @@ public class Map implements Serializable {
 			curPosition = step.apply(curPosition);
 		}
 		return sb.toString();
-	}
-
-	public ru.ibragim.model.Map toDbMap()
-	{
-		return Db;
 	}
 }
