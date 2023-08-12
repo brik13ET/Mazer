@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<!DOCTYPE hibernate-configuration PUBLIC  
-        "-//Hibernate/Hibernate Configuration DTD 5.3//EN"  
-        "http://www.hibernate.org/dtd/hibernate-configuration-5.3.dtd">  
-<hibernate-configuration>  
-    <session-factory>  
-            
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 5.3//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-5.3.dtd">
+<hibernate-configuration>
+    <session-factory>
+
     <property name="hbm2ddl.auto">
 		update
-	</property>    
+	</property>
 	<property name="dialect">
 		org.hibernate.dialect.PostgreSQLDialect
 	</property>
 	<property name="connection.url">
-		jdbc:postgresql://192.168.56.104/postgres
+		jdbc:postgresql://alpine.local/postgres
 	</property>
 	<property name="connection.username">
 		postgres
@@ -26,9 +26,9 @@
 	<property name="hibernate.globally_quoted_identifiers">true</property>
 	<property name="hibernate.show_sql">false</property>
 	<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
-	
-	
-	<mapping class="ru.ibragim.model.Turn"/>  
-	<mapping class="ru.ibragim.Map"/>  
-    </session-factory>  
+
+
+	<mapping class="ru.ibragim.base.Turn"/>
+	<mapping class="ru.ibragim.base.Map"/>
+    </session-factory>
 </hibernate-configuration>

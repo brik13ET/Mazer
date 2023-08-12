@@ -6,7 +6,9 @@ import org.hibernate.*;
 import org.hibernate.boot.*;
 import org.hibernate.boot.registry.*;
 
-import ru.ibragim.model.Turn;
+import ru.ibragim.base.BaseSolver;
+import ru.ibragim.base.Map;
+import ru.ibragim.base.Turn;
 
 /**
  * Hello world!

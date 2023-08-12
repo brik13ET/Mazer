@@ -2,6 +2,12 @@ package ru.ibragim;
 
 import java.util.Stack;
 
+import ru.ibragim.base.BaseSolver;
+import ru.ibragim.base.Cell;
+import ru.ibragim.base.Direction;
+import ru.ibragim.base.Map;
+import ru.ibragim.base.State;
+
 public class DFSolver extends BaseSolver
 {
 	public DFSolver(Map m)

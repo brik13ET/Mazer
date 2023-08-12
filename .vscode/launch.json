@@ -9,6 +9,13 @@
 			"name": "App",
 			"request": "launch",
 			"mainClass": "ru.ibragim.App",
+			"projectName": "hibernateapp"
+		},
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "ru.ibragim.App",
 			"projectName": "mazer"
 		}
 	]

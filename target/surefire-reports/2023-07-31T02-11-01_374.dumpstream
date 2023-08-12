@@ -1,5 +1,0 @@
-# Created at 2023-07-31T02:11:01.821
-Boot Manifest-JAR contains absolute paths in classpath 'd:\Git\Mazer\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

@@ -10,7 +10,9 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.Test;
 
-import ru.ibragim.model.Turn;
+import ru.ibragim.base.BaseSolver;
+import ru.ibragim.base.Map;
+import ru.ibragim.base.Turn;
 
 /**
  * Unit test for simple App.
@@ -51,7 +53,7 @@ public class AppTest
 	@Test
 	public void echoClassNames()
 	{
-		Class[] classes = new Class[] { ru.ibragim.model.Turn.class, ru.ibragim.Map.class};
+		Class[] classes = new Class[] { ru.ibragim.base.Turn.class, ru.ibragim.base.Map.class};
 		for (Class cl : classes) {
 			System.out.printf("%s:\t%s\n", cl.getSimpleName(), cl.getName());
 		}
@@ -78,19 +80,20 @@ public class AppTest
 		var t = session.beginTransaction();
 		System.out.println("Pulled maps");
 
-		var qMaps = session.createQuery("from ru.ibragim.Map").list();
+		var qMaps = session.createQuery("from ru.ibragim.base.Map").list();
 		System.out.println(qMaps.size());
 
 		
 		for (var m: qMaps)
 		{
-			if (!(m instanceof ru.ibragim.Map))
+			if (!(m instanceof ru.ibragim.base.Map))
 			{
 				System.out.println("Bad Object");
 				continue;
 			}
-			var castedMap = (ru.ibragim.Map)m;
+			var castedMap = (ru.ibragim.base.Map)m;
 			System.out.println(castedMap);
+			System.out.println(castedMap.toNiceString());
 		}
 
 		session.clear();
@@ -119,7 +122,7 @@ public class AppTest
 			.build();
 		Session session = factory.openSession();
 		
-		var qTurns = session.createQuery("select t from ru.ibragim.model.Turn t order by t.order").list();
+		var qTurns = session.createQuery("select t from ru.ibragim.base.Turn t order by t.order").list();
 		for (Object object : qTurns) {
 			if (! (object instanceof Turn))
 			{
